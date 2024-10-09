@@ -61,41 +61,41 @@
             <form class="principal__formulario" data-formulario>
                 <fieldset class="formulario__campo">
                     <label class="campo__etiqueta" for="nome">Nome</label>
-                    <input name="nome" id="nome" class="campo__escrita" />
-                    <span class="mensagem-erro"></span>
+                    <input name="nome" id="nome" class="campo__escrita" type="text" minlength="3" required />
+                    <span class="mensagem-erro" id="valida-nome"></span>
                 </fieldset>
 
                 <fieldset class="formulario__campo">
                     <label class="campo__etiqueta" for="email">E-mail</label>
-                    <input name="email" id="email" class="campo__escrita" />
-                    <span class="mensagem-erro"></span>
+                    <input name="email" id="email" class="campo__escrita" type="email" minlength="5" required />
+                    <span class="mensagem-erro" id="valida-email"></span>
                 </fieldset>
                 <fieldset class="formulario__campo">
                     <label class="campo__etiqueta" for="rg">RG</label>
-                    <input name="rg" id="rg" class="campo__escrita campo__escrita--menor" />
-                    <span class="mensagem-erro"></span>
+                    <input name="rg" id="rg" class="campo__escrita campo__escrita--menor" type="text" required/>
+                    <span class="mensagem-erro" id="valida-rg"></span>
                 </fieldset>
                 <fieldset class="formulario__campo">
                     <label class="campo__etiqueta" for="cpf">CPF (apenas números)</label>
-                    <input name="cpf" id="cpf" class="campo__escrita campo__escrita--menor" required />
-                    <span class="mensagem-erro"></span>
+                    <input name="cpf" id="cpf" class="campo__escrita campo__escrita--menor" type="text" minlength="11" maxlength="14"  required/>
+                    <span class="mensagem-erro" id="valida-cpf"></span>
                 </fieldset>
                 <fieldset class="formulario__campo">
                     <label class="campo__etiqueta" for="aniversario">Data de nascimento</label>
-                    <input name="aniversario" id="aniversario" class="campo__escrita campo__escrita--menor" />
-                    <span class="mensagem-erro"></span>
+                    <input name="aniversario" id="aniversario" class="campo__escrita campo__escrita--menor" type="date" required />
+                    <span class="mensagem-erro" id="valida-aniversario"></span>
                 </fieldset>
                 <fieldset class="formulario__termos">
-                    <input name="termos" class="termos__input">
+                    <input name="termos" id="termos" class="termos__input" type="checkbox" required />
                     <p class="termos__texto">Li e estou ciente quanto às condições de tratamento dos meus dados conforme
                         descrito na Política
                         de
                         Privacidade do banco.</p>
-                    <span class="mensagem-erro"></span>
+                    <span class="mensagem-erro" id="valida-termo"></span>
                 </fieldset>
 
                 <div>
-                    <input value="Avançar" class="formulario__botao" id="enviar" data-botao-enviar>
+                   <input value="Avançar" class="formulario__botao" id="enviar" data-botao-enviar type="button" onclick="validacampos()" >
                     <span class="mensagem-erro"></span>
                 </div>
             </form>
@@ -158,6 +158,29 @@
             <h2 class="rodape__logo"><span class="rodape__logo--negrito">Moni</span>Bank</h2>
         </section>
     </footer>
+    <script>
+   function validacampos(){
+       if (document.getElementById("nome").value==""){
+           document.getElementById("valida-nome").innerHTML="O campo NOME não pode estar em branco";
+       } else {document.getElementById("valida-nome").innerHTML="";}
+       if (document.getElementById("email").value==""){
+           document.getElementById("valida-email").innerHTML="O campo EMAIL não pode estar em branco";
+       } else {document.getElementById("valida-email").innerHTML="";}
+       if (document.getElementById("rg").value==""){
+           document.getElementById("valida-rg").innerHTML="O campo RG não pode estar em branco";
+       } else {document.getElementById("valida-rg").innerHTML="";}
+       if (document.getElementById("cpf").value==""){
+           document.getElementById("valida-cpf").innerHTML="O campo CPF não pode estar em branco";
+       } else {document.getElementById("valida-cpf").innerHTML="";}
+       if (document.getElementById("aniversario").value==""){
+           document.getElementById("valida-aniversario").innerHTML="O campo DATA não pode estar em branco";
+       } else {document.getElementById("valida-aniversario").innerHTML="";}
+       if (document.getElementById("termos").value==""){
+           document.getElementById("valida-termo").innerHTML="O campo TERMO não pode estar em branco";
+       } else {document.getElementById("valida-termo").innerHTML="";}
+   }
+</script>
+
 </body>
 
 </html>
